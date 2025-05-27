@@ -1,0 +1,27 @@
+{
+  "name": "u17g.com",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "bun --hot run ./src/dev-server.tsx",
+    "build:css": "tailwindcss -i ./src/styles/main.css -o ./dist/styles.css --minify",
+    "build": "bun run ./src/build.ts && bun run build:css"
+  },
+  "dependencies": {
+    "hono": "^4.7.8"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^1.9.4",
+    "@tailwindcss/cli": "^4.1.4",
+    "@types/bun": "^1.2.10",
+    "gray-matter": "^4.0.3",
+    "rehype-class-names": "^2.0.0",
+    "rehype-stringify": "^10.0.1",
+    "remark-gfm": "^4.0.1",
+    "remark-parse": "^11.0.0",
+    "remark-rehype": "^11.1.2",
+    "tailwindcss": "^4.1.4",
+    "unified": "^11.0.5",
+    "zod": "^3.24.3"
+  }
+}
