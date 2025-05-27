@@ -3,6 +3,7 @@ import { HtmlEscapedCallbackPhase, resolveCallback } from "hono/utils/html";
 import fs from "fs/promises";
 import { processPathname } from "./utils/pathname";
 import path from "path";
+import { config } from "./config";
 
 main();
 
@@ -10,7 +11,7 @@ async function generateSitemap(
   routes: { path: string; render: () => any; locale: { code: string; path: string } }[],
   outputDir: string,
 ) {
-  const baseUrl = "https://u17g.com";
+  const baseUrl = config.baseUrl;
   const currentDate = new Date().toISOString().split("T")[0];
 
   // Group routes by their base path (without locale)
@@ -75,6 +76,27 @@ ${sitemapEntries}
   console.log("Generated sitemap.xml");
 }
 
+async function generateRobotsTxt(outputDir: string) {
+  const baseUrl = config.baseUrl;
+
+  const robotsTxt = `User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: ${baseUrl}/sitemap.xml
+
+# Block common bot paths
+Disallow: /api/
+Disallow: /_next/
+Disallow: /admin/
+Disallow: /.well-known/
+`;
+
+  const robotsPath = path.resolve(outputDir, "robots.txt");
+  await fs.writeFile(robotsPath, robotsTxt);
+  console.log("Generated robots.txt");
+}
+
 async function main() {
   const outputDir = path.resolve(process.cwd(), "dist");
   await fs.rmdir(outputDir, { recursive: true }).catch(() => {});
@@ -97,4 +119,7 @@ async function main() {
 
   // Generate sitemap.xml
   await generateSitemap(routes, outputDir);
+
+  // Generate robots.txt
+  await generateRobotsTxt(outputDir);
 }
