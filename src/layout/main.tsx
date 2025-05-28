@@ -103,11 +103,11 @@ function Footer() {
       )}
     >
       <div class="col-[2/-2] border-zinc-600 border-x flex flex-col items-center h-full justify-center">
-        <div class="flex flex-row gap-16 justify-center my-16 max-w-full flex-wrap">
+        <div class="flex flex-row gap-16 justify-start sm:justify-center my-16 w-full flex-wrap max-w-[600px] px-4">
           <img src="/static/images/logo.png" alt="Unbounded Pioneering Inc." class="h-10" />
         </div>
-        <div class="flex flex-row justify-start sm:justify-center gap-8 sm:gap-16 max-w-full flex-wrap">
-          <div class="flex flex-col gap-2 flex-nowrap px-8 w-full sm:w-fit">
+        <div class="flex flex-row justify-start sm:justify-center gap-8 sm:gap-16 w-full max-w-[600px] flex-wrap">
+          <div class="flex flex-col gap-2 flex-nowrap px-4 w-full sm:w-fit">
             <div class="flex gap-2 font-bold text-zinc-200">Company</div>
             <a href={createLink("/changelog")} class="hover:underline">
               {t({ en: "Changelog", ja: "沿革" })}
@@ -119,13 +119,13 @@ function Footer() {
               {t({ en: "Email us", ja: "お問い合わせ" })}
             </a>
           </div>
-          <div class="flex flex-col gap-2 flex-nowrap px-8 w-full sm:w-fit">
+          <div class="flex flex-col gap-2 flex-nowrap px-4 w-full sm:w-fit">
             <div class="flex gap-2 font-bold text-zinc-200">Product</div>
             <a href="https://senditly.ai" class="hover:underline">
               Senditly
             </a>
           </div>
-          <div class="flex flex-col gap-2 flex-nowrap px-8 w-full sm:w-fit">
+          <div class="flex flex-col gap-2 flex-nowrap px-4 w-full sm:w-fit">
             <div class="flex gap-2 font-bold text-zinc-200">Language</div>
             <a href={"/"} class="hover:underline">
               English
@@ -135,7 +135,7 @@ function Footer() {
             </a>
           </div>
         </div>
-        <div class="flex flex-row gap-4 sm:gap-8 justify-start md:justify-center my-16 px-8 flex-wrap max-w-[600px]">
+        <div class="flex flex-row gap-4 sm:gap-8 justify-start sm:justify-center my-16 px-4 flex-wrap max-w-[600px]">
           <div class="text-nowrap">
             {t({
               en: "© 2025 Unbounded Pioneering Inc.",
@@ -144,13 +144,13 @@ function Footer() {
           </div>
           <a
             href={createLink("/legal/privacy", "https://senditly.ai")}
-            class="hover:underline text-nowrap"
+            class="hover:underline text-nowrap w-full sm:w-fit"
           >
             {t({ en: "Privacy Policy", ja: "プライバシーポリシー" })}
           </a>
           <a
             href={createLink("/legal/terms", "https://senditly.ai")}
-            class="hover:underline text-nowrap"
+            class="hover:underline text-nowrap w-full sm:w-fit"
           >
             {t({ en: "Terms of Service", ja: "利用規約" })}
           </a>

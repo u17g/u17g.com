@@ -8,7 +8,7 @@ import path from "path";
 const app = new Hono();
 
 app.get("/styles.css", async (c) => {
-  execSync("bun run build:css");
+  execSync("tailwindcss -i ./src/styles/main.css -o ./dist/styles.css --minify");
   return c.text(await fs.readFile("dist/styles.css", "utf-8"));
 });
 
