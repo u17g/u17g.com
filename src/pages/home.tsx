@@ -1,13 +1,11 @@
-import { Html, MainLayout } from "@/layout/main";
-import { useInlineTranslation } from "@/hooks/translation";
+import { Html, MainLayout, MaxWidthContainer } from "@/layout/main";
 
 export default function Page() {
-  const t = useInlineTranslation();
   return (
     <Html>
       <MainLayout>
-        <div class="flex flex-col gap-8 items-start justify-center max-w-[600px] w-[100%] min-h-[calc(100vh-16px)]">
-          <div class="flex flex-col gap-8 p-8">
+        <MaxWidthContainer class="flex flex-col gap-8 items-start justify-center">
+          <div class="flex flex-col gap-8">
             <h1 class="text-2xl font-bold leading-[1.2] mt-16">Welcome to Unbounded Pioneering.</h1>
             <p class="text-md">
               We are a startup based in Tokyo, established in June, 2024.
@@ -41,7 +39,7 @@ export default function Page() {
             </p>
             <p>— The entire u17g team</p>
           </div>
-        </div>
+        </MaxWidthContainer>
       </MainLayout>
     </Html>
   );

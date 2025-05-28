@@ -56,7 +56,9 @@ export function MainLayout({ children }: { children: Child }) {
         <HeadSpacer />
         <main class="row-span-full col-span-full grid grid-cols-subgrid">
           <div class="col-[2/-2] border-zinc-600 border-x">
-            <div class="flex flex-row justify-center animate-appear">{children}</div>
+            <div class="flex flex-row justify-center animate-appear min-h-[calc(100vh-16px)] p-4">
+              {children}
+            </div>
           </div>
         </main>
         <Footer />
@@ -64,6 +66,16 @@ export function MainLayout({ children }: { children: Child }) {
       </div>
     </div>
   );
+}
+
+export function MaxWidthContainer({
+  children,
+  class: className,
+}: {
+  children: Child;
+  class?: string;
+}) {
+  return <div class={cn("w-[100%] max-w-[600px]", className)}>{children}</div>;
 }
 
 function HeadSpacer() {
@@ -97,6 +109,9 @@ function Footer() {
         <div class="flex flex-row justify-start sm:justify-center gap-8 sm:gap-16 max-w-full flex-wrap">
           <div class="flex flex-col gap-2 flex-nowrap px-8 w-full sm:w-fit">
             <div class="flex gap-2 font-bold text-zinc-200">Company</div>
+            <a href={createLink("/changelog")} class="hover:underline">
+              {t({ en: "Changelog", ja: "沿革" })}
+            </a>
             <a href="https://github.com/u17g" class="hover:underline">
               Github
             </a>

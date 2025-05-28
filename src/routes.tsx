@@ -1,6 +1,7 @@
 import { JSX } from "hono/jsx/jsx-runtime";
 import { Locale, SUPPORTED_LOCALES } from "./locales";
 import { I18nProvider } from "./hooks/translation";
+import { readDirRecursive } from "./utils/read-file";
 
 type Route = {
   path: string;
@@ -22,6 +23,20 @@ const createRouteDefs: () => Route[] = () => {
       path: "/",
       render: lazy(import("./pages/home")),
     },
+    {
+      path: "/changelog",
+      render: lazy(import("./pages/changelog/index")),
+    },
+    ...readDirRecursive("@/docs/changelog").map((path) => {
+      return {
+        path: `/changelog/${path}`,
+        render: async () => {
+          const imported = await import(`./pages/changelog/_path`);
+          const { default: Page } = imported;
+          return <Page path={`@/docs/changelog/${path}`} />;
+        },
+      };
+    }),
   ];
 };
 
