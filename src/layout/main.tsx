@@ -148,12 +148,6 @@ function Footer() {
           >
             {t({ en: "Privacy Policy", ja: "プライバシーポリシー" })}
           </a>
-          <a
-            href={createLink("/legal/terms", "https://senditly.ai")}
-            class="hover:underline text-nowrap w-full sm:w-fit"
-          >
-            {t({ en: "Terms of Service", ja: "利用規約" })}
-          </a>
           <div>
             {t({
               en: "Yamato Billding 405, 1-6-16 Kandaizumi-cho, Chiyoda-Ku, Tokyo, 101-0024",
