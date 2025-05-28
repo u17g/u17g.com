@@ -7,6 +7,7 @@
   },
   "scripts": {
     "dev": "bun --hot run ./src/dev-server.tsx",
+    "preview": "bun run ./src/preview-server.tsx",
     "build:css": "tailwindcss -i ./src/styles/main.css -o ./dist/styles.css --minify",
     "build": "bun run ./src/build.ts && bun run build:css"
   },
