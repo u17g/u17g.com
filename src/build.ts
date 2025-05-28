@@ -4,8 +4,14 @@ import fs from "fs/promises";
 import { processPathname } from "./utils/pathname";
 import path from "path";
 import { config } from "./config";
+import crypto from "crypto";
+import { execSync } from "child_process";
 
 main();
+
+function digest(str: string) {
+  return crypto.createHash("sha256").update(str).digest("hex").slice(0, 16);
+}
 
 async function generateSitemap(
   routes: { path: string; render: () => any; locale: { code: string; path: string } }[],
@@ -34,7 +40,7 @@ async function generateSitemap(
 
   const sitemapEntries = routes
     .map((route) => {
-      const url = `${baseUrl}${route.path === "/" ? "" : route.path}`;
+      const url = `${baseUrl}${route.path === "/" ? "" : route.path}${route.path.endsWith("/") ? "" : "/"}`;
 
       // Calculate base path for this route
       const basePath = route.locale.path
@@ -47,7 +53,7 @@ async function generateSitemap(
       // Generate hreflang links
       const hreflangLinks = alternates
         .map((alt) => {
-          const altUrl = `${baseUrl}${alt.path === "/" ? "" : alt.path}`;
+          const altUrl = `${baseUrl}${alt.path === "/" ? "" : alt.path}${alt.path.endsWith("/") ? "" : "/"}`;
           return `    <xhtml:link rel="alternate" hreflang="${alt.locale}" href="${altUrl}" />`;
         })
         .join("\n");
@@ -100,6 +106,7 @@ Disallow: /.well-known/
 async function main() {
   const outputDir = path.resolve(process.cwd(), "dist");
   await fs.rmdir(outputDir, { recursive: true }).catch(() => {});
+  console.log("Cleaned dist directory");
   await fs.mkdir(outputDir, { recursive: true });
   await fs.mkdir(path.resolve(outputDir, "static"), { recursive: true });
   await fs.cp(path.resolve(process.cwd(), "./src/static"), path.resolve(outputDir, "static"), {
@@ -107,13 +114,25 @@ async function main() {
   });
   console.log("Copied static files");
 
+  execSync(`tailwindcss -i ./src/styles/main.css -o ${outputDir}/styles.css --minify`);
+  console.log("Built styles.css");
+  const cssDigest = digest(await fs.readFile(path.resolve(outputDir, "styles.css"), "utf-8"));
+  console.log("style digest:", cssDigest);
+  const cssFilename = `styles.${cssDigest}.css`;
+  await fs.rename(path.resolve(outputDir, "styles.css"), path.resolve(outputDir, cssFilename));
+  console.log(`Renamed styles.css to ${cssFilename}`);
+
   const routes = createI18nRoutes();
   for (const route of routes) {
     const rendered = await route.render();
     const html = await resolveCallback(rendered, HtmlEscapedCallbackPhase.Stringify, false, {});
+    const compiledHtml = `<!DOCTYPE html>${html}`.replaceAll(
+      `href="/styles.css"`,
+      `href="/${cssFilename}"`,
+    );
     const outputPath = path.resolve(outputDir, processPathname(route.path));
     await fs.mkdir(path.dirname(outputPath), { recursive: true });
-    await fs.writeFile(outputPath, `<!DOCTYPE html>${html}`);
+    await fs.writeFile(outputPath, compiledHtml);
     console.log(`Built ${route.path}`);
   }
 

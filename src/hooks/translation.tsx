@@ -35,9 +35,9 @@ export function useCreateLocaledLink() {
   return useCallback(
     (path: string, baseUrl?: string) => {
       if (locale.path) {
-        return `${baseUrl || ""}/${locale.path}${path}`;
+        return `${baseUrl || ""}/${locale.path}${path}${path.endsWith("/") ? "" : "/"}`;
       }
-      return `${baseUrl || ""}${path}`;
+      return `${baseUrl || ""}${path}${path.endsWith("/") ? "" : "/"}`;
     },
     [locale.path],
   );
