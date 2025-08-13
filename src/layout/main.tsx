@@ -115,6 +115,9 @@ function Footer() {
             <a href="https://github.com/u17g" class="hover:underline">
               Github
             </a>
+            <a href="https://www.twitch.tv/ryosukesuzuki" class="hover:underline">
+              Twitch
+            </a>
             <a href="mailto:support@u17g.com" class="hover:underline">
               {t({ en: "Email us", ja: "お問い合わせ" })}
             </a>
