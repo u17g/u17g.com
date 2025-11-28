@@ -20,23 +20,6 @@ export default function Page() {
               product for our early customers' success. So it's not open to public yet.
             </p>
             <p>If you are interested in our work, please let us know.</p>
-            <p class="text-md">
-              <b>Trusted by</b>
-              <div class="flex flex-row gap-4 items-center">
-                <img
-                  src="/static/images/logo-plaid.svg"
-                  alt="plaid.co.jp"
-                  class="h-[20px] w-auto"
-                  loading="lazy"
-                />
-                <img
-                  src="/static/images/logo-codatum.svg"
-                  alt="codatum.com"
-                  class="h-[17px] w-auto"
-                  loading="lazy"
-                />
-              </div>
-            </p>
             <p>— The entire u17g team</p>
           </div>
         </MaxWidthContainer>
