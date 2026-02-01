@@ -12,12 +12,10 @@ export default function Page() {
               <br /> We build and deliver breakthroughs to redefine what's possible.
             </p>
             <p class="text-md">
-              Our first work is{" "}
-              <a href="https://senditly.ai" class="underline font-bold">
-                Senditly
+              We are working on{" "}
+              <a href="https://turnint.ai" class="underline font-bold">
+                Turnint AI
               </a>
-              , the next-gen interactive email platform that converts. We are highly focusing on the
-              product for our early customers' success. So it's not open to public yet.
             </p>
             <p>If you are interested in our work, please let us know.</p>
             <p>— The entire u17g team</p>
