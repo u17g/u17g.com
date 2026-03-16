@@ -54,6 +54,12 @@ export default function Page() {
                 </div>
               </div>
             ))}
+            <p class="text-sm text-zinc-400 mt-8">
+              {t({
+                en: "...and many other amazing people who challenge the frontier with us.",
+                ja: "...そして、共に挑んでくれている多くの素晴らしい仲間たち。",
+              })}
+            </p>
           </div>
         </MaxWidthContainer>
       </MainLayout>
