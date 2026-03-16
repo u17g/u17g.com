@@ -11,6 +11,10 @@ const members = [
     name: { en: "Shinobu Miyahara", ja: "宮原 忍" },
     role: { en: "Outside Advisor", ja: "社外アドバイザー" },
     image: "/static/images/people/shinobu-miyahara.png",
+    description: {
+      en: "Experienced in business development, product management, and enterprise scaling at Recruit, Plaid, and IVRy. Strengthening business strategy for Turnint AI.",
+      ja: "リクルート、プレイド、IVRyにて事業開発・プロダクトマネジメント・エンタープライズ領域の事業設計を推進。Turnint AIの事業戦略強化を担当。",
+    },
   },
 ];
 
@@ -25,8 +29,8 @@ export default function Page() {
           </h1>
           <div class="flex flex-col gap-8 w-full">
             {members.map((member) => (
-              <div class="flex items-center gap-4">
-                <div class="w-12 h-12 rounded-md bg-zinc-700 overflow-hidden flex-shrink-0">
+              <div class="flex items-start gap-4">
+                <div class="w-12 h-12 rounded-md bg-zinc-700 overflow-hidden flex-shrink-0 mt-0.5">
                   {member.image && (
                     <img
                       src={member.image}
@@ -38,6 +42,9 @@ export default function Page() {
                 <div>
                   <p class="font-bold">{t(member.name)}</p>
                   <p class="text-sm text-zinc-400">{t(member.role)}</p>
+                  {member.description && (
+                    <p class="text-sm text-zinc-500 mt-1">{t(member.description)}</p>
+                  )}
                 </div>
               </div>
             ))}
