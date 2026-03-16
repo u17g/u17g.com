@@ -62,7 +62,7 @@ export function MainLayout({ children }: { children: Child }) {
         <HeadSpacer />
         <main class="row-span-full col-span-full grid grid-cols-subgrid">
           <div class="col-[2/-2] border-zinc-600 border-x">
-            <div class="flex flex-row justify-center animate-appear min-h-[calc(100vh-16px)] p-4">
+            <div class="flex flex-row justify-center min-h-[calc(100vh-16px)] p-4">
               {children}
             </div>
           </div>
