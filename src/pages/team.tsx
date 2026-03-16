@@ -1,4 +1,4 @@
-import { useInlineTranslation } from "@/hooks/translation";
+import { useCreateLocaledLink, useInlineTranslation } from "@/hooks/translation";
 import { Html, MainLayout, MaxWidthContainer } from "@/layout/main";
 
 const members = [
@@ -20,11 +20,15 @@ const members = [
 
 export default function Page() {
   const t = useInlineTranslation();
+  const createLink = useCreateLocaledLink();
   return (
     <Html title={t({ en: "Team - Unbounded Pioneering", ja: "チーム - Unbounded Pioneering" })}>
       <MainLayout>
         <MaxWidthContainer class="flex flex-col gap-8 items-start justify-center">
-          <h1 class="text-2xl font-bold leading-[1.2] mt-16">
+          <a href={createLink("/")} class="text-sm text-zinc-400 underline mt-16">
+            {t({ en: "← Home", ja: "← ホーム" })}
+          </a>
+          <h1 class="text-2xl font-bold leading-[1.2]">
             {t({ en: "u17g team", ja: "u17g チーム" })}
           </h1>
           <div class="flex flex-col gap-8 w-full">
