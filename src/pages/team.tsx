@@ -43,7 +43,7 @@ export default function Page() {
                   <p class="font-bold">{t(member.name)}</p>
                   <p class="text-sm text-zinc-400">{t(member.role)}</p>
                   {member.description && (
-                    <p class="text-sm text-zinc-500 mt-1">{t(member.description)}</p>
+                    <p class="text-sm text-zinc-400 mt-1">{t(member.description)}</p>
                   )}
                 </div>
               </div>
