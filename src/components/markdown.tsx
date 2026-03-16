@@ -22,6 +22,7 @@ export function MarkdownRenderer({ markdown }: { markdown: string }) {
       li: "py-1 pl-1",
       blockquote: "border-l-2 border-gray-300 pl-6 my-4 text-gray-500",
       a: "text-blue-400 underline",
+      img: "w-full h-auto max-w-full rounded-md",
     })
     .use(rehypeStringify)
     .processSync(markdown);

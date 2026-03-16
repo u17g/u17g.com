@@ -25,6 +25,11 @@ createI18nRoutes().forEach((route) => {
     console.log("request:", route.path);
     return c.html(<route.render />);
   });
+
+  app.get(route.path + "/", (c) => {
+    console.log("request:", route.path);
+    return c.html(<route.render />);
+  });
 });
 
 export default {
