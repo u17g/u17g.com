@@ -1,4 +1,10 @@
-import { useCreateLocaledLink, useInlineTranslation, useLocale } from "@/hooks/translation";
+import {
+  useCreateLocaledLink,
+  useInlineTranslation,
+  useLocale,
+  usePagePath,
+} from "@/hooks/translation";
+import { SUPPORTED_LOCALES } from "@/locales";
 import { cn } from "@/utils/cn";
 import type { Child } from "hono/jsx";
 
@@ -128,15 +134,7 @@ function Footer() {
               Senditly
             </a>
           </div>
-          <div class="flex flex-col gap-2 flex-nowrap px-4 w-full sm:w-fit">
-            <div class="flex gap-2 font-bold text-zinc-200">Language</div>
-            <a href={"/"} class="hover:underline">
-              English
-            </a>
-            <a href={"/ja-jp/"} class="hover:underline">
-              日本語
-            </a>
-          </div>
+          <LanguageSwitcher />
         </div>
         <div class="flex flex-row gap-4 sm:gap-8 justify-start sm:justify-center my-16 px-4 flex-wrap max-w-[600px]">
           <div class="text-nowrap">
@@ -166,5 +164,24 @@ function Footer() {
         </div>
       </div>
     </footer>
+  );
+}
+
+function LanguageSwitcher() {
+  const pagePath = usePagePath();
+  return (
+    <div class="flex flex-col gap-2 flex-nowrap px-4 w-full sm:w-fit">
+      <div class="flex gap-2 font-bold text-zinc-200">Language</div>
+      {SUPPORTED_LOCALES.map((locale) => {
+        const href = locale.path
+          ? `/${locale.path}${pagePath}${pagePath.endsWith("/") ? "" : "/"}`
+          : `${pagePath}${pagePath.endsWith("/") ? "" : "/"}`;
+        return (
+          <a href={href} class="hover:underline">
+            {locale.label}
+          </a>
+        );
+      })}
+    </div>
   );
 }

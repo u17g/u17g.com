@@ -3,10 +3,12 @@ import { type SupportedLocaleCode, FALLBACK_LOCALE, SUPPORTED_LOCALES } from "..
 
 type LocaleCodeContext = {
   code: SupportedLocaleCode;
+  pagePath: string;
 };
 
 const LocaleContext = createContext<LocaleCodeContext>({
   code: FALLBACK_LOCALE.code,
+  pagePath: "/",
 });
 
 export const I18nProvider = LocaleContext.Provider;
@@ -28,6 +30,11 @@ export function useInlineTranslation() {
       resources[code] || resources[FALLBACK_LOCALE.code],
     [code],
   );
+}
+
+export function usePagePath() {
+  const ctx = useContext(LocaleContext);
+  return ctx.pagePath;
 }
 
 export function useCreateLocaledLink() {

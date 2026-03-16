@@ -24,6 +24,10 @@ const createRouteDefs: () => Route[] = () => {
       render: lazy(import("./pages/home")),
     },
     {
+      path: "/team",
+      render: lazy(import("./pages/team")),
+    },
+    {
       path: "/changelog",
       render: lazy(import("./pages/changelog/index")),
     },
@@ -50,7 +54,7 @@ export const createI18nRoutes = (): RouteWithLocale[] => {
         path: `${locale.path ? `/${locale.path}` : ""}${routeDef.path}`,
         render: () => {
           return (
-            <I18nProvider value={{ code: locale.code }}>
+            <I18nProvider value={{ code: locale.code, pagePath: routeDef.path }}>
               <routeDef.render />
             </I18nProvider>
           );
