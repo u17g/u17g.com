@@ -62,9 +62,7 @@ export function MainLayout({ children }: { children: Child }) {
         <HeadSpacer />
         <main class="row-span-full col-span-full grid grid-cols-subgrid">
           <div class="col-[2/-2] border-zinc-600 border-x">
-            <div class="flex flex-row justify-center min-h-[calc(100vh-16px)] p-4">
-              {children}
-            </div>
+            <div class="flex flex-row justify-center min-h-[calc(100vh-16px)] p-4">{children}</div>
           </div>
         </main>
         <Footer />
@@ -144,7 +142,10 @@ function Footer() {
             })}
           </div>
           <a
-            href={createLink("/legal/privacy", "https://senditly.ai")}
+            href={t({
+              en: "https://turnint.ai/legal/privacy",
+              ja: "https://turnint.ai/jp/legal/privacy",
+            })}
             class="hover:underline text-nowrap w-full sm:w-fit"
           >
             {t({ en: "Privacy Policy", ja: "プライバシーポリシー" })}
