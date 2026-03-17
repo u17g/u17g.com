@@ -54,7 +54,7 @@ export default function Page() {
               })}
             </p>
             <p>
-              <a href={createLink("/team")} class="underline">
+              <a href={createLink("/team")} class="hover:underline">
                 {t({ en: "— The entire u17g team", ja: "— u17g チーム" })}
               </a>
             </p>
