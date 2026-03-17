@@ -116,6 +116,9 @@ function Footer() {
             <a href={createLink("/changelog")} class="hover:underline">
               {t({ en: "Changelog", ja: "沿革" })}
             </a>
+            <a href={createLink("/team")} class="hover:underline">
+              {t({ en: "Team", ja: "チーム" })}
+            </a>
             <a href="https://github.com/u17g" class="hover:underline">
               Github
             </a>
