@@ -131,9 +131,6 @@ function Footer() {
             <a href="https://turnint.ai" class="hover:underline">
               Turnint AI
             </a>
-            <a href="https://senditly.ai" class="hover:underline">
-              Senditly
-            </a>
           </div>
           <LanguageSwitcher />
         </div>
