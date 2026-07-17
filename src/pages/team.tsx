@@ -12,8 +12,8 @@ const members = [
     role: { en: "Outside Advisor", ja: "社外アドバイザー" },
     image: "/static/images/people/shinobu-miyahara.png",
     description: {
-      en: "Experienced in business development, product management, and enterprise scaling at Recruit, Plaid, and IVRy. Strengthening business strategy for Turnint AI.",
-      ja: "リクルート、プレイド、IVRyにて事業開発・プロダクトマネジメント・エンタープライズ領域の事業設計を推進。Turnint AIの事業戦略強化を担当。",
+      en: "Experienced in business development, product management, and enterprise scaling at Recruit, Plaid, and IVRy. Strengthening business strategy for Timothe AI.",
+      ja: "リクルート、プレイド、IVRyにて事業開発・プロダクトマネジメント・エンタープライズ領域の事業設計を推進。Timothe AIの事業戦略強化を担当。",
     },
   },
 ];
