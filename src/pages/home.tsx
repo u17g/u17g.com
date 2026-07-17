@@ -32,7 +32,7 @@ export default function Page() {
                   <>
                     We are working on{" "}
                     <a href="https://turnint.ai" class="underline font-bold">
-                      Turnint AI
+                      Timothe AI
                     </a>
                   </>
                 ),
@@ -40,7 +40,7 @@ export default function Page() {
                   <>
                     私たちは今、
                     <a href="https://turnint.ai" class="underline font-bold">
-                      Turnint AI
+                      Timothe AI（ティモシーAI）
                     </a>{" "}
                     に取り組んでいます。
                   </>
