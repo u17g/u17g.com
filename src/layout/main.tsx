@@ -128,8 +128,11 @@ function Footer() {
           </div>
           <div class="flex flex-col gap-2 flex-nowrap px-4 w-full sm:w-fit">
             <div class="flex gap-2 font-bold text-zinc-200">Product</div>
-            <a href="https://turnint.ai" class="hover:underline">
-              Turnint AI
+            <a href="https://timothe.ai" class="hover:underline">
+              Timothe AI
+            </a>
+            <a href="https://timothe.ai/growth-calendar" class="hover:underline">
+              Timothe's Growth Calendar
             </a>
           </div>
           <LanguageSwitcher />
